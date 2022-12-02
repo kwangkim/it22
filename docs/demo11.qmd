@@ -10,8 +10,8 @@ execute:
 slide-format: revealjs
 format:
   revealjs: 
-    keep-md: true # Debugging
-    keep-ipynb: true # Debugging
+    keep-md: false # Debugging
+    keep-ipynb: false # Debugging
     slide-number: true
     css: [lib/css/details.css,lib/css/extra_reveal.css]
     embed-resources: true
@@ -52,7 +52,7 @@ $$\cos\theta=\frac{1}{\tan\theta}=\frac{x}{y}$$
 :::{layout="[3,2]"}
 Find the exact value of all six trigonometric functions of the angle $A$. 
 
-![](lib/pic/practice28.svg){width="120%"}
+![](lib/pic/p1.svg){width="120%"}
 :::
 <details>
 <summary>Show</summary> 
@@ -88,6 +88,6 @@ $120^\circ$ is in Quadrant II. <br/>
 - $ref(120^\circ)=180^\circ-120^\circ= 60^\circ$
 $$\tan 120^\circ=-\tan(60^\circ)=-\sqrt{3}$$
 
-![](../lib/pic/value_120.svg)
+![](lib/pic/p2.svg)
 :::
 </details>

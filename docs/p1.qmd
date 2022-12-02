@@ -4,7 +4,7 @@
 import {make_positionC} from '@kkim/ma121'
 pos=make_positionC(12,-5,'A')
 ```
-:::{layout="[3,2]"}
+:::{layout="[4,2]"}
 Find the exact value of all six trigonometric functions of the angle $A$. 
 
 <div>

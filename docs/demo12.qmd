@@ -1,5 +1,5 @@
 ---
-title: "Demo 11"
+title: "Demo 12"
 author: 
   - name: "Kwang Hyun Kim"
     email: "kkim@qcc.cuny.edu"
@@ -10,8 +10,8 @@ execute:
 slide-format: revealjs
 format:
   revealjs: 
-    keep-md: true # Debugging
-    keep-ipynb: true # Debugging
+    keep-md: false # true for Debugging
+    keep-ipynb: false # true for Debugging
     slide-number: true
     css: [lib/css/details.css,lib/css/extra_reveal.css]
     embed-resources: true

@@ -1,8 +1,12 @@
+# QMD
+docs/*_files
+docs/*.md
+docs/*.ipynb
+doc/*.tex
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
 # C extensions
 *.so
 

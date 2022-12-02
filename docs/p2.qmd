@@ -10,6 +10,6 @@ $120^\circ$ is in Quadrant II. <br/>
 - $ref(120^\circ)=180^\circ-120^\circ= 60^\circ$
 $$\tan 120^\circ=-\tan(60^\circ)=-\sqrt{3}$$
 
-![](../lib/pic/p2.svg)
+![](lib/pic/p2.svg)
 :::
 </details>
