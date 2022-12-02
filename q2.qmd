@@ -1,0 +1,59 @@
+```{python}
+#| output: 'asis'
+#| fig-env: mdframed
+#| width: 100px
+# Q2
+from sympy import *
+#pt=12
+#vspace="12cm"
+### q opt
+opt=[
+    { 'rr': 75,'deg':41},
+    { 'rr': 85,'deg':39}
+][ver]
+rd=1 # tenth
+### derived picture
+# https://stackoverflow.com/q/70050740
+import math
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+import operator
+psum=lambda P,Q: tuple(map(operator.add,P,Q))
+h,b=1.6,3.2
+plt.figure(figsize=(b,h))
+plt.axis('off') # remove axis
+pC = (0,h)
+pA = (b,h) 
+pB = (0,0)
+pD=(0.02*h,0.04*h)
+d=0.2*h
+plt.plot(*zip(pA, pB, pC, pA), marker='o', color='black')
+plt.text(*psum(pA,pD),'$A$', fontsize=12)
+plt.text(*psum(pB,pD),'$B$', fontsize=12)
+plt.text(*psum(pC,pD),'$C$', fontsize=12)
+plt.text(pC[0]+0.05*h,pC[1]-0.2*h,'$90^\circ$', fontsize=12)
+plt.text(pA[0]-0.5*h,pA[1]-0.15*h,fr"${opt['deg']}^\circ$", fontsize=12)
+plt.text((pA[0]+pB[0])/2,(pA[1]+pB[1])/2-0.2*h,fr"${opt['rr']}$ meters", fontsize=12)
+### derived opt
+dopt={}
+### answer
+bc=opt['rr']*sin(opt['deg']*Pi/180)
+lans0=pdec(bc,rd+2)
+ans=round(bc,rd)
+solution=fr"""
+:::{{.sol}}
+\begin{{align*}}
+\sin( { latex(opt['deg']) }^\circ )&=\frac{{ BC }}{{ {latex(opt['rr'])} }}\\
+BC&={ latex(opt['rr']) }\cdot \sin( {opt['deg']}^\circ )={lans0}\approx \boxed{{ {latex(ans)} m}}
+\end{{align*}}
+:::
+"""
+### output
+output=fr"\question[{pt}] "
+output+=fr"""Find the length of $BC$ to the nearest **tenth** of a meter where $AB={opt['rr']} m$.\newline"""
+footer= fr"""{solution}""" if showanswer else fr"""\vspace{{ {vspace} }}"""
+### print
+print(output)
+plt.show()
+print(footer)
+```

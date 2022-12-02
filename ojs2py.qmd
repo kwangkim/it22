@@ -1,0 +1,69 @@
+```{python}
+#| echo: false
+#| output: asis
+# library
+import asyncio
+from playwright.async_api import async_playwright
+async def JXG2SVG(jscode,id='jxgbox',width="500px",height="500px",box=[-5,5,5,-5],axis=True,board='board'):
+  opt={
+    'id': id,
+    'width':width,
+    'height':height,
+    'box': box,
+    'axis': axis,
+    'board': board,
+    'jscode':jscode
+  }
+  html=f"""
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+  </head>
+  <body>
+  <div id="{opt['id']}" class="jxgbox" style="width:{opt['width']}; height:{opt['height']}"></div>
+  <script>
+  var {opt['board']} = JXG.JSXGraph.initBoard("{opt['id']}", {{ 
+      boundingbox: {opt['box']}, 
+      showCopyright: false,
+      axis:{'true' if opt['axis'] else 'false'}
+  }});
+  </script>
+  <script>
+  {opt['jscode']}
+  </script>
+  <script>
+  var svg = new XMLSerializer().serializeToString({opt['board']}.renderer.svgRoot);
+  </script>
+  </body>
+  </html>
+  """
+  playwright = await async_playwright().start()
+  browser = await playwright.chromium.launch(headless = True)
+  page = await browser.new_page()
+  await page.set_content(html)
+  svg = await page.evaluate('() => svg')
+  return svg
+jscode=r"""board.suspendUpdate();
+var p = [];
+p[0] = board.create('point', [-1,-2], {size:2});
+p[1] = board.create('point', [6,5], {size:2});
+p[2] = board.create('point', [-0.5,1], {size:2});
+p[3] = board.create('point', [3,3], {size:2});
+var f = JXG.Math.Numerics.lagrangePolynomial(p);
+var graph = board.create('functiongraph', [f,-10, 10]);
+var g = function(x) {
+     return JXG.Math.Numerics.D(f)(x)-(p[1].Y()-p[0].Y())/(p[1].X()-p[0].X());
+};
+var r = board.create('glider', [
+                    function() { return JXG.Math.Numerics.root(g,(p[0].X()+p[1].X())*0.5); },
+                    function() { return f(JXG.Math.Numerics.root(g,(p[0].X()+p[1].X())*0.5)); },
+                    graph], {name:' ',size:4,fixed:true});
+board.create('tangent', [r], {strokeColor:'red'});
+var line = board.create('line',[p[0],p[1]],{strokeColor:'red',dash:1});
+board.unsuspendUpdate();
+"""
+svg = await JXG2SVG(jscode,width="600px",height="400px",box=[-5,10,7,-6])
+print(svg)
+```

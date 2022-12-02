@@ -1,0 +1,93 @@
+---
+title: "Demo 11"
+author: 
+  - name: "Kwang Hyun Kim"
+    email: "kkim@qcc.cuny.edu"
+    affiliation: "Queensborough Community College"
+date: 12/02/2022
+execute:
+  echo: false
+slide-format: revealjs
+format:
+  revealjs: 
+    keep-md: true # Debugging
+    keep-ipynb: true # Debugging
+    slide-number: true
+    css: [lib/css/details.css,lib/css/extra_reveal.css]
+    embed-resources: true
+    standalone: true # One file
+    controls: true
+    preview-links: true
+    link-external-newwindow: true
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    transition: none
+    theme: simple
+    background-transition: none
+    scrollable: true
+    #width: 1920
+    height: 1080
+    margin: 0.05
+---
+## Right Triangle and Trigonometry
+
+::: {layout-ncol=2}
+By Pythagorean theorem, $$x^2+y^2=r^2$$
+
+![](lib/pic/right_triangle.svg){width="250px"}
+:::
+::: {layout-ncol=3}
+$$\sin\theta=\frac{y}{r}$$
+$$\cos\theta=\frac{x}{r}$$
+
+$$\tan\theta=\frac{\sin\theta}{\cos\theta}=\frac{y}{x}$$
+$$\csc\theta=\frac{1}{\sin\theta}=\frac{r}{y}$$
+
+$$\sec\theta=\frac{1}{\cos\theta}=\frac{r}{x}$$
+$$\cos\theta=\frac{1}{\tan\theta}=\frac{x}{y}$$
+:::
+
+## Practice 1: No Decimal approximation!
+:::{layout="[3,2]"}
+Find the exact value of all six trigonometric functions of the angle $A$. 
+
+![](lib/pic/practice28.svg){width="120%"}
+:::
+<details>
+<summary>Show</summary> 
+::: {.panel-tabset}
+## $r$
+$$
+r=\sqrt{\left(12\right)^2+\left(-5\right)^2}=\sqrt{169}=13$$
+
+## $\sin,\csc$
+$$
+\sin A=\frac{y}{r}={\color{red}-\frac{5}{13}},\csc A={\color{red}-\frac{13}{5}}
+$$
+
+## $\cos,\sec$
+$$\cos A=\frac{x}{r}={\color{red}\frac{12}{13}},~
+\sec A={\color{red}\frac{13}{12}}$$
+
+## $\tan,\cot$
+$$\tan A=\frac{x}{y}={\color{red}-\frac{5}{12}},~
+\cot A={\color{red}-\frac{12}{5}}$$
+:::
+</details>
+
+## Practice 2: Exact values with a ref angle
+
+Determine the exact value of $\tan 120^\circ$ . (Decimal approximations will **NOT** be accepted.)
+
+<details>
+<summary>Show</summary>
+:::{layout="[5,2]"}
+$120^\circ$ is in Quadrant II. <br/>
+- $\tan(120^\circ) < 0$ <br/>
+- $ref(120^\circ)=180^\circ-120^\circ= 60^\circ$
+$$\tan 120^\circ=-\tan(60^\circ)=-\sqrt{3}$$
+
+![](../lib/pic/value_120.svg)
+:::
+</details>

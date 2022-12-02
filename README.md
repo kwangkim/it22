@@ -1,2 +1,5 @@
 # it22
-it22 slide and related files
+[21th CUNY IT conference](https://events.govtech.com/CUNY-IT-Conference-2022.html) 
+
+- Slide and related files
+- Generating Interactive and Individualized Course Content on Time Using Markdown, Python and JavaScript by Kwang Hyun Kim

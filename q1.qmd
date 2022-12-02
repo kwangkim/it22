@@ -1,0 +1,22 @@
+```{python}
+#| output: 'asis'
+# Q1
+#pt=10
+#vspace="8cm"
+### q opt
+from sympy import *
+opt=[{'deg':5*3*7},{'deg':5*3*11}][ver]
+### answer
+ans=Rational(opt['deg'],180)*pi
+solution=rf"""
+:::{{.sol}}
+$${latex(opt['deg'])}^\circ\times \frac{{\pi}}{{180^\circ}}=\boxed{{ {latex(ans)} }}$$
+:::
+"""
+### output
+output=fr"""
+\question[{pt}] Convert ${opt['deg']}^\circ$ to radians. Express your result in terms of $\pi$ and reduce the fraction to the lowest term.
+"""
+footer= fr"{solution}" if showanswer else fr"\vspace{{ {vspace} }}"
+print(output,footer,sep="\n")
+```

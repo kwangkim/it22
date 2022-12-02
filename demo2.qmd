@@ -1,0 +1,115 @@
+---
+#title: "demo2"
+execute:
+  echo: false
+format:
+  pdf:
+    documentclass: exam
+    keep-tex: true # Debug
+    keep-md: true # Debug
+    papersize: legal
+    classoption: [answers]
+    include-in-header:
+      text: |
+        \setlength{\columnseprule}{0.2pt}
+        \setlength{\columnsep}{1.2cm}
+        \usepackage{mdframed}
+        \usepackage{multicol}
+        \newcommand{\newcol}{\vfill\null\columnbreak}
+geometry:
+  - margin=0.5in
+filters:
+   - latex-environment
+environments:
+    questions: questions
+    parts: parts
+    multicols: multicols
+    sol: solution
+commands:
+    cb: newcol
+---
+```{python}
+#| tags: [parameters]
+section="ABC"
+ver=0
+showanswer=True
+```
+```{python}
+# library
+from sympy import *
+Prec=50
+Pi=Float(pi,Prec)
+def pdec(x,d,prec=Prec):
+    xf=Float(x,prec)
+    strx=str(xf)
+    pdot=strx.find('.')
+    if pdot==-1 or xf==Integer(xf): # integer
+        return str(Integer(xf))
+    else:
+        return strx[0:pdot+d+1]+'\ldots'
+def latexp(expr):
+  if latex(expr)[0]!='-' and latex(expr)[0]!='+':
+    return f"+{latex(expr)}"
+  else:
+    return latex(expr)
+```
+```{python}
+#| output: 'asis'
+semester="22F"
+course="DEMO"
+title=f"{semester}-{course}-{section}"
+exam="EXAM1"
+vletter=chr(65+ver) 
+examtitle=f"{exam}{vletter}"
+examdate=r"12/02/2022"
+examperiod="9:30AM - 10:00AM"
+output1=fr"""## {title} {examtitle} ({examdate}, {examperiod}) """
+if showanswer:
+  output1+="(Sample Answer)"
+else:
+  output1+="Your name:"
+extra=fr"""unless a question requires to write the answer only"""
+output2=fr"""To get a full credit, **show your work for each question**."""
+output3=fr"Put each final answer in a box like $\boxed{{12}}$."
+# output+=fr"\vspace{{ {vspace} }}"
+print(output1)
+print(output2)
+print(output3)
+```
+:::{.questions}
+:::{.multicols arguments="2"}
+```{python}
+pt,vspace=20,"10cm"
+```
+{{< include q1.qmd >}}
+
+```{python}
+pt,vspace=20,"10cm"
+```
+{{< include q2.qmd >}}
+
+```{python}
+#| output: 'asis'
+# cb
+if not(showanswer):
+  print(r"[]{.cb}")
+```
+
+```{python}
+pt,vspace=20,"10cm"
+```
+{{< include q3.qmd >}}
+
+```{python}
+#| output: 'asis'
+if not(showanswer):
+  print(r'\newpage')
+```
+```{python}
+pt,vspace=20,"15cm"
+```
+{{< include q4.qmd >}}
+:::
+:::
+
+

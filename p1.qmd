@@ -1,0 +1,35 @@
+## Practice 1: No Decimal approximation!
+```{ojs}
+//| echo: false
+import {make_positionC} from '@kkim/ma121'
+pos=make_positionC(12,-5,'A')
+```
+:::{layout="[3,2]"}
+Find the exact value of all six trigonometric functions of the angle $A$. 
+
+<div>
+${pos.show()}
+</div>
+:::
+
+<details>
+<summary>Show</summary> 
+::: {.panel-tabset}
+## $r$
+$$
+r=\sqrt{\left(12\right)^2+\left(-5\right)^2}=\sqrt{169}=13$$
+
+## $\sin,\csc$
+$$
+\sin A=\frac{y}{r}={\color{red}-\frac{5}{13}},\csc A={\color{red}-\frac{13}{5}}
+$$
+
+## $\cos,\sec$
+$$\cos A=\frac{x}{r}={\color{red}\frac{12}{13}},~
+\sec A={\color{red}\frac{13}{12}}$$
+
+## $\tan,\cot$
+$$\tan A=\frac{x}{y}={\color{red}-\frac{5}{12}},~
+\cot A={\color{red}-\frac{12}{5}}$$
+:::
+</details>

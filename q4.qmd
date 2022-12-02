@@ -1,0 +1,70 @@
+```{python}
+#| output: 'asis'
+# Q4
+#pt=10
+#vspace="16cm"
+### preamble
+from sympy import *
+x,y=symbols("x y")
+### q ans
+ans={}
+ans['xx'],ans['yy']=[(Rational(1,3),-2),(2,-Rational(2,3))][ver]
+### q opt
+opt={}
+opt['a0'],opt['b0']=[(6,5),(5,6)][ver]
+opt['a1'],opt['b1']=[(3,4),(4,3)][ver]
+### q dopt
+dopt={
+  'c0':opt['a0']*ans['xx']+opt['b0']*ans['yy'],
+  'c1':opt['a1']*ans['xx']+opt['b1']*ans['yy'],
+  'eq0':opt['a0']*x+opt['b0']*y,
+  'eq1':opt['a1']*x+opt['b1']*y,
+  'lcma':lcm(opt['a0'],opt['a1']),
+}
+dopt['f0']=dopt['lcma']//opt['a0']
+dopt['f1']=-dopt['lcma']//opt['a1']
+
+### q dans
+dans={}
+dans['pt']=(ans['xx'],ans['yy'])
+### q solution
+solution=rf"""
+:::{{.sol}}
+Remove a variable $x$. \newline
+Since $LCM( {opt['a0']},{opt['a1']})={dopt['lcma']}$, we multply ${dopt['f0']}$ and ${dopt['f1']}$ to get ${latex(dopt['lcma']*x)}$ and ${latex(-dopt['lcma']*x)}$  respectively.
+
+\begin{{align*}}
+{latex(dopt['f0'])}\left({latex(dopt['eq0'])}\right)&={latex(dopt['f0'])}\cdot({latex(dopt['c0'])}) &~{latex(dopt['f0']*dopt['eq0'])}&={latex(dopt['f0']*dopt['c0'])}\\
+{latex(dopt['f1'])}\left({latex(dopt['eq1'])}\right)&={latex(dopt['f1'])}\cdot({latex(dopt['c1'])}) &~{latex(dopt['f1']*dopt['eq1'])}&={latex(dopt['f1']*dopt['c1'])}
+\end{{align*}}
+Add two equations.
+\begin{{align*}}
+{latex((dopt['f0']*opt['b0']+dopt['f1']*opt['b1'])*y)}&={latex(dopt['f0']*dopt['c0']+dopt['f1']*dopt['c1'])}\\
+y&={latex(ans['yy'])}
+\end{{align*}}
+Evaluate ${latex(dopt['eq0'])}={latex(dopt['c0'])}$ with $y={latex(ans['yy'])}$.
+\begin{{align*}}
+{latex(opt['a0']*x+opt['b0'])}\left({latex(ans['yy'])}\right)&={latex(dopt['c0'])}\\
+{latex(opt['a0']*x)}{latexp(opt['b0']*ans['yy'])}&={latex(dopt['c0'])}\\
+{latex(opt['a0']*x)}&={latex(dopt['c0'])}{latexp( -opt['b0']*ans['yy'] )}\\
+{latex(opt['a0']*x)}&={latex(dopt['c0']-opt['b0']*ans['yy'])}\\
+{latex(x)}&={latex(ans['xx'])}
+\end{{align*}}
+Therefore 
+$$
+{latex((ans['xx'],ans['yy']))}
+$$
+:::
+"""
+### output
+output=fr"""
+\question[{pt}] """
+output+=fr"""Solve the following system of equations algebraically. Write your answer as a **point** like $(1,9)$.
+\begin{{align*}}
+{latex(dopt['eq0'])}&={latex(dopt['c0'])}\\
+{latex(dopt['eq1'])}&={latex(dopt['c1'])}
+\end{{align*}}
+"""
+footer= fr"{solution}" if showanswer else fr"\vspace{{ {vspace} }}"
+print(output,footer,sep="\n")
+```
