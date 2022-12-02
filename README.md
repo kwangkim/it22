@@ -1,4 +1,4 @@
-# it22
+# it22 <https://github.com/kwangkim/it22>
 [21th CUNY IT conference](https://events.govtech.com/CUNY-IT-Conference-2022.html) 
 
 - Slide and related files
