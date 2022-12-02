@@ -10,8 +10,8 @@ execute:
 slide-format: revealjs
 format:
   revealjs: 
-    keep-md: true # Debugging
-    keep-ipynb: true # Debugging
+    keep-md: false # Debugging
+    keep-ipynb: false # Debugging
     slide-number: true
     css: [lib/css/details.css,lib/css/extra_reveal.css]
     embed-resources: true
