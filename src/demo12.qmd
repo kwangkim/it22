@@ -1,0 +1,53 @@
+---
+title: "Demo 11"
+author: 
+  - name: "Kwang Hyun Kim"
+    email: "kkim@qcc.cuny.edu"
+    affiliation: "Queensborough Community College"
+date: 12/02/2022
+execute:
+  echo: false
+slide-format: revealjs
+format:
+  revealjs: 
+    keep-md: true # Debugging
+    keep-ipynb: true # Debugging
+    slide-number: true
+    css: [lib/css/details.css,lib/css/extra_reveal.css]
+    embed-resources: true
+    standalone: true # One file
+    controls: true
+    preview-links: true
+    link-external-newwindow: true
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    transition: none
+    theme: simple
+    background-transition: none
+    scrollable: true
+    #width: 1920
+    height: 1080
+    margin: 0.05
+---
+## Right Triangle and Trigonometry
+
+::: {layout-ncol=2}
+By Pythagorean theorem, $$x^2+y^2=r^2$$
+
+![](lib/pic/demo1.svg){width="250px"}
+:::
+::: {layout-ncol=3}
+$$\sin\theta=\frac{y}{r}$$
+$$\cos\theta=\frac{x}{r}$$
+
+$$\tan\theta=\frac{\sin\theta}{\cos\theta}=\frac{y}{x}$$
+$$\csc\theta=\frac{1}{\sin\theta}=\frac{r}{y}$$
+
+$$\sec\theta=\frac{1}{\cos\theta}=\frac{r}{x}$$
+$$\cos\theta=\frac{1}{\tan\theta}=\frac{x}{y}$$
+:::
+
+{{< include p1.qmd >}}
+
+{{< include p2.qmd >}}

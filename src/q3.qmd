@@ -1,0 +1,34 @@
+```{python}
+#| output: 'asis'
+# Q3
+from sympy import *
+#pt=10
+#vspace="8cm"
+### q opt
+opt=[
+  {'fname':'csc','value':Rational(2,5)*pi},
+  {'fname':'sin','value':Rational(2,9)*pi},
+][ver]
+### derived opt
+cofn={
+  'sin':'cos','cos':'sin','tan':'cot','cot':'tan','sec':'csc','csc':'sec'
+}
+dopt={'gname':cofn[opt['fname']]}
+### answer
+complement=Rational(1,2)*pi-opt['value']
+lcomplement=fr"{latex(Rational(1,2)*pi)}-{latex(opt['value'])}"
+latexans=fr"\{dopt['gname']}\left({latex(complement)}\right)"
+solution=fr"""
+:::{{.sol}}
+$$\{opt['fname']}\left({latex(opt['value'])}\right)=\{dopt['gname']}\left({lcomplement}\right)=\boxed{{ {latexans} }}$$
+:::
+"""
+### output
+output=fr"\question[{pt}] "
+output+=fr"""
+Find a cofunction with the same value as $\{opt['fname']} {latex(opt['value'])}$. Write your answer in radians.
+"""
+footer= fr"""{solution}""" if showanswer else fr"""\vspace{{ {vspace} }}"""
+### print
+print(output,footer)
+```

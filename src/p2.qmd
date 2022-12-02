@@ -1,0 +1,15 @@
+## Practice 2: Exact values with a ref angle
+
+Determine the exact value of $\tan 120^\circ$ . (Decimal approximations will **NOT** be accepted.)
+
+<details>
+<summary>Show</summary>
+:::{layout="[5,2]"}
+$120^\circ$ is in Quadrant II. <br/>
+- $\tan(120^\circ) < 0$ <br/>
+- $ref(120^\circ)=180^\circ-120^\circ= 60^\circ$
+$$\tan 120^\circ=-\tan(60^\circ)=-\sqrt{3}$$
+
+![](../lib/pic/p2.svg)
+:::
+</details>
